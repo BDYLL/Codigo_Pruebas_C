@@ -22,6 +22,25 @@ int toBinary(int n){
 	return 0;
 }
 
+int sqr(int x){
+	return x*x;
+}
+
+int nthPower(int x, int n){
+	if(n==1){
+		return x;
+	}
+	else if(n==0){
+		return 1;
+	}
+	else if((n%2)==0){
+		return sqr(nthPower(x,n/2));
+	}
+	else{
+		return x*sqr(nthPower(x,(n-1)/2));
+	}
+}
+
 int fib(int n){
 	if(n==0){
 		return 0;
@@ -55,7 +74,16 @@ int ack(int m, int n){
 
 int main(){	
 
-	int res = fib(0);
+	int x;
+	int n;
+	int res;
+
+	printf("Enter an integer base: \n");
+	scanf("%d",&x);
+	printf("Enter an integer exponent: \n");
+	scanf("%d",&n);
+
+	res = nthPower(x,n);
 
 	printf("%d\n", res);
 
